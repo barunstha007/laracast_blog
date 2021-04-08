@@ -51,4 +51,18 @@ class User extends Authenticatable
 
         return $this->hasMany(Comment::class);
      }
+
+     public function publish(Post $post){
+
+        //using eloquent to do the publishing
+
+        $this->post()->save($post);
+
+        // Post::create([
+        //     'title' => request('title'),
+        //     'body' => request('body'),
+        //     'user_id'=>auth()->id(),
+
+        // ]);
+     }
 }

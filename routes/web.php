@@ -12,6 +12,7 @@ Route::get('/', 'App\Http\Controllers\PostsController@index')->name('home');
 Route::get('/posts/create', 'App\Http\Controllers\PostsController@create');
 
 Route::get('/posts', 'App\Http\Controllers\PostsController@index');
+
 Route::post('/posts/store', 'App\Http\Controllers\PostsController@store');
 
 
@@ -26,8 +27,17 @@ Route::Post('/register', 'App\Http\Controllers\RegistrationController@store');
 
 
 Route::get('/login', 'App\Http\Controllers\SessionsController@create');
+Route::Post('/check', 'App\Http\Controllers\SessionsController@store');
+
+
+
 
 Route::get('/logout', 'App\Http\Controllers\SessionsController@destroy');
+
+Route::get('/upload','App\Http\Controllers\PostsController@upload');
+Route::post('/upload','App\Http\Controllers\PostsController@store');
+
+
 
 
 

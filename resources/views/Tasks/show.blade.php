@@ -16,6 +16,8 @@
                 <li class="list-group-item">  
                     
                     <strong>
+                        {{ $post->user->name }}'s comment
+
                         {{ $comment->created_at->diffForHumans() }} : &nbsp;
                     </strong>
                     

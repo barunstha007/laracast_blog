@@ -25,7 +25,7 @@
             <br>
           <div>
             @foreach ( $posts as $post )
-
+           
                 @include('Tasks.post')
 
             @endforeach

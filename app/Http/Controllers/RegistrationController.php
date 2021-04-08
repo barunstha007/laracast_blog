@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
+
+
 
 class RegistrationController extends Controller
 {
@@ -13,7 +17,7 @@ class RegistrationController extends Controller
         return view('sessions.register');
     }
 
-    public function  store()
+    public function  store(Request $request)
     {
         //validate the form
 
@@ -24,8 +28,15 @@ class RegistrationController extends Controller
         ]);
 
         //create the user
+        $hashpassword=Hash::make($request->password);
 
-        $user=User::create(request(['name','email','password']));
+        // echo $request->password; die();
+        $user=User::create([
+            'name' =>$request->name,
+            'email' => $request->email,
+            'password'=>$hashpassword
+
+        ]);
 
         //sign the user in
 

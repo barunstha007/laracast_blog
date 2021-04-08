@@ -14,7 +14,7 @@ class PostsController extends Controller
     }
 
  
-
+ 
 
     public function index()
     {
@@ -32,7 +32,7 @@ class PostsController extends Controller
 
     }
 
-    public function store()
+    public function store(Request $request)
     {
         $this->validate(request(),
         [
@@ -41,14 +41,47 @@ class PostsController extends Controller
 
         ]);
 
-        Post::create([
-            'title' => request('title'),
-            'body' => request('body'),
-            'user_id'=>auth()->id(),
+        // auth()->user()->publish(
+        //     new Post(request([ 'title','body']))
+        // );
 
-        ]);
+        if($request->hasFile('file'))
+        {
+            $request->validate([
+                'image' => 'mimes:png,jpg,jpeg,bmp'
+            ]);
+
+            $request->file->store('product','public');
+
+            $product = new Post([
+                "file_path" => $request->file->hashName(),
+                "title" => $request->title,
+                "body" =>$request->body,
+                "user_id"=>auth()->id(),
+            ]);
+
+            $product->save();
+
+
+        }      
 
         return redirect('/');
+
+    }
+
+    public function upload()
+    {
+        return view('Tasks.create');
+    }
+
+    public function storeupload(Request $request)
+    {
+        $request->validate([
+            'title'=>'required',
+            'body'=>'required'
+        ]);
+        
+      
 
     }
 

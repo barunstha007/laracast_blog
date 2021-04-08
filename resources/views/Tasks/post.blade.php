@@ -1,11 +1,11 @@
-@extends('layouts.app')
 
-@section('content')
 <div class="blog-post">
 
     <h2 class="blog-post-title">
             <a href="/posts/{{$post->id}}">
         {{ $post->title}}
+
+        <img src="{{ storage_path() }}/products/{{$post->file_path}}">
     </a>
     </h2>
 
@@ -23,4 +23,3 @@
 
     {{$post->body}}
 </div>
-@endsection

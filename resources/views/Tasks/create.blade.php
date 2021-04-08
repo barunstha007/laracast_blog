@@ -6,7 +6,7 @@
 
     <h1>Create a post</h1>
 
-    <form method="POST" action="/posts/store">
+    <form method="POST" action="/posts/store" enctype="multipart/form-data">
 
         @csrf
         <div class="form-group">
@@ -18,6 +18,10 @@
           <textarea   class="form-control" id="body" name="body"></textarea>
         </div>
 
+        <div class="form-group">
+          <input type="file" name="file" required>
+      </div>
+      
 
         <button type="submit" class="btn btn-primary">Publish</button>
 
