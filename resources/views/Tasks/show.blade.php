@@ -11,7 +11,7 @@
     <div class="comments">
             <div class="card">
 
-                @foreach ($post ->comments as $comment )
+                @foreach ($post->comments as $comment )
 
                 <li class="list-group-item">  
                     

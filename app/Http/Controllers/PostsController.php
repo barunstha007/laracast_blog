@@ -91,4 +91,24 @@ class PostsController extends Controller
         return view('Tasks.show',compact('post'));
 
     }
+
+    public function search(Request $request)
+    {
+        //to get the value in the search from blade
+        $search = $request->input('search');
+
+        // dd($search); die();
+        //search in the posts title and body
+
+
+        $posts= Post::where('title','LIKE','%'.$search.'%')
+                ->orwhere('body','LIKE','%'.$search.'%')
+                ->get();
+
+        // $posts = Post::search($search)->get();
+        // dd($posts); die();
+
+
+        return view('Tasks.search',compact('posts','search'));
+    }   
 }

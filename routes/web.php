@@ -38,6 +38,8 @@ Route::get('/upload','App\Http\Controllers\PostsController@upload');
 Route::post('/upload','App\Http\Controllers\PostsController@store');
 
 
+Route::get('/search','App\Http\Controllers\PostsController@search')->name('search');
+
 
 
 

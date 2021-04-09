@@ -10,7 +10,8 @@ class Post extends Model
     use HasFactory;
 
     
-    protected $fillable = ['title', 'body','user_id','file_path'];
+    public $fillable = ['title', 'body','user_id','file_path','search'];
+    public $timestamps = false;
 
 
     public function comments()
